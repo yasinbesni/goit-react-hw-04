@@ -1,0 +1,19 @@
+.loadMore {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+.button {
+    padding: 10px 20px;
+    color:#d6f4b7;
+    background-color: #f1b095;
+    border: 1px solid #ef936c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button:hover,
+.button:focus {
+    background-color: #ef936c;
+    
+}
