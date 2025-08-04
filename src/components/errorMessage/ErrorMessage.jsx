@@ -1,14 +1,6 @@
-import toast, { Toaster } from "react-hot-toast";
-import css from "./ErrorMessage.module.css";
-const ErrorMessage = () => {
-  const notify = () => toast.error("Oops. Something went wrong");
-  notify();
-  return (
-      
-    <>
-      
-      <Toaster />
-    </>
-  )
-};
+import styles from "./ErrorMessage.module.css";
+import React from "react";
+function ErrorMessage({ message }) {
+  return <p className={styles.error}>{message}</p>;
+}
 export default ErrorMessage;

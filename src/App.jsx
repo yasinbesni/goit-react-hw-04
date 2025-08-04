@@ -1,12 +1,12 @@
 import "./App.css";
 import { useState } from "react";
-import SearchBar from "../searchBar/SearchBar";
-import fetchImages from "../../pictures-api";
-import ImageGallery from "../imageGallery/ImageGallery";
-import Loader from "../loader/Loader";
-import ErrorMessage from "../errorMessage/ErrorMessage";
-import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn";
-import ImageModal from "../imageModal/ImageModal";
+import SearchBar from "./components/searchBar/SearchBar";
+import fetchImages from "./pictures-api";
+import ImageGallery from "./components/imageGallery/ImageGallery";
+import Loader from "./components/loader/Loader";
+import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/imageModal/ImageModal";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -61,7 +61,7 @@ function App() {
       <SearchBar onSearch={handleSearch} />
       <ImageGallery images={images} onImageClick={handleImageClick} />
       {loading && <Loader />}
-      {error && <ErrorMessage />}
+      {error && <ErrorMessage message={error} />}
       {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
       {selectedImage && (
         <ImageModal image={selectedImage} onClose={closeModal} />
