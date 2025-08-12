@@ -23,6 +23,7 @@ function App() {
       setPage(1);
       const data = await fetchImages(searchQuery, 1);
       setImages(data);
+      setError(false);
     } catch (error) {
       setError(true);
     } finally {
@@ -61,11 +62,9 @@ function App() {
       <SearchBar onSearch={handleSearch} />
       <ImageGallery images={images} onImageClick={handleImageClick} />
       {loading && <Loader />}
-      {error && <ErrorMessage message={error} />}
+      {error && <ErrorMessage message="Error loading images." />}
       {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
-      {selectedImage && (
-        <ImageModal image={selectedImage} onClose={closeModal} />
-      )}
+      <ImageModal image={selectedImage} onClose={closeModal} />
     </>
   );
 }
