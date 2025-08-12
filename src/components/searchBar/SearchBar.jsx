@@ -1,30 +1,27 @@
+import { useState } from "react";
 import css from "./SearchBar.module.css";
 import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
+
   const handleSearch = (evt) => {
     evt.preventDefault();
-
-    const form = evt.target;
-    const query = form.elements.query.value;
     if (query.trim() === "") {
       toast.error("Please enter search term!");
       return;
     }
     onSearch(query);
-    form.reset();
+    setQuery("");
   };
 
-  // SVG için ayrı fonksiyon
   const handleIconClick = () => {
-    const input = document.querySelector(`.${css.searchbar}`);
-    const query = input.value;
     if (query.trim() === "") {
       toast.error("Please enter search term!");
       return;
     }
     onSearch(query);
-    input.value = "";
+    setQuery("");
   };
 
   return (
@@ -36,6 +33,8 @@ const SearchBar = ({ onSearch }) => {
               className={css.searchbar}
               type="text"
               name="query"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               autoComplete="off"
               autoFocus
               placeholder="Search images and photos"
